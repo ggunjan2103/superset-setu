@@ -64,6 +64,18 @@ export default function setupFormatters() {
     .registerValue('$,.f', getNumberFormatter('$,.4f'))
     .registerValue('DURATION', createDurationFormatter())
     .registerValue(
+      'CURRENCY_INDIA',
+      createD3NumberFormatter({
+        locale: {
+          decimal: '.',
+          thousands: ',',
+          grouping: [3, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+          currency: ['₹', ''],
+        },
+      formatString: '$,.2f',
+      }),
+    )
+    .registerValue(
       'DURATION_SUB',
       createDurationFormatter({ formatSubMilliseconds: true }),
     );
